@@ -10,7 +10,6 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "jsx": "react",
-    "rootDir": "src",
     "baseUrl": "src",
     "allowJs": true,
     "skipLibCheck": true,
@@ -21,6 +20,7 @@
     "strict": true,
   },
   "include": [
-    "src"
+    "src",
+    "test"
   ]
 }
