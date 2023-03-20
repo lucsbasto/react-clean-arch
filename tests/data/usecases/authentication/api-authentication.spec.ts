@@ -5,13 +5,16 @@ import { ApiAuthentication } from '@src/data/usecases/authentication/api-authent
 import { HttpStatusCode } from '@src/data/protocols/http/http-response'
 import { InvalidCredentialsError } from '@src/domain/errors/invalid-credentials-error'
 import { UnexpectedError } from '@src/domain/errors/unexpected-error'
+import { AuthenticationParams } from '@src/domain/usecases/authentication'
+import { AccountModel } from '@src/domain/models/account-model'
+
 type SutTypes = {
   sut: ApiAuthentication
-  httpPostClientSpy: HttpPostClientSpy
+  httpPostClientSpy: HttpPostClientSpy<AuthenticationParams, AccountModel>
 }
 
 const makeSut = (url: string = faker.internet.url()): SutTypes => {
-  const httpPostClientSpy = new HttpPostClientSpy()
+  const httpPostClientSpy = new HttpPostClientSpy<AuthenticationParams, AccountModel>()
   const sut = new ApiAuthentication(url, httpPostClientSpy)
   return {
     sut, httpPostClientSpy

@@ -3,11 +3,12 @@ import { IHttpPostClient } from '@src/data/protocols/http/http-post-client'
 import { HttpStatusCode } from '@src/data/protocols/http/http-response'
 import { InvalidCredentialsError } from '@src/domain/errors/invalid-credentials-error'
 import { UnexpectedError } from '@src/domain/errors/unexpected-error'
+import { AccountModel } from '@src/domain/models/account-model'
 
 export class ApiAuthentication {
   constructor (
     private readonly url: string,
-    private readonly httpPostClient: IHttpPostClient
+    private readonly httpPostClient: IHttpPostClient<AuthenticationParams, AccountModel>
   ) {}
 
   async auth (params: AuthenticationParams): Promise<void> {
