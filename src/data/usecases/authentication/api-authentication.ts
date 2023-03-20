@@ -1,4 +1,4 @@
-import { type IHttpPostClient } from '@/data/protocols/http/http-post-client'
+import { IHttpPostClient } from 'data/protocols/http/http-post-client'
 
 export class ApiAuthentication {
   constructor (
