@@ -1,7 +1,9 @@
-import { HttpPostClientSpy } from '@tests/mocks/mock-http-client'
-import { ApiAuthentication } from '@src/data/usecases/authentication/api-authentication'
 import { faker } from '@faker-js/faker'
+import { HttpPostClientSpy } from '@tests/mocks/mock-http-client'
 import { mockAuthentication } from '@tests/mocks/mock-authentication'
+import { ApiAuthentication } from '@src/data/usecases/authentication/api-authentication'
+import { HttpStatusCode } from '@src/data/protocols/http/http-response'
+import { InvalidCredentialsError } from '@src/domain/errors/invalid-credentials-error'
 type SutTypes = {
   sut: ApiAuthentication
   httpPostClientSpy: HttpPostClientSpy
@@ -29,5 +31,14 @@ describe('ApiAuthentication', () => {
     const authenticationParams = mockAuthentication()
     await sut.auth(authenticationParams)
     expect(httpPostClientSpy.body).toEqual(authenticationParams)
+  })
+
+  test('Should throw InvalidCredentialsError if HttpPostClient returns stauts 401', async () => {
+    const { sut, httpPostClientSpy } = makeSut()
+    httpPostClientSpy.response = {
+      statusCode: HttpStatusCode.unauthorized
+    }
+    const promise = sut.auth(mockAuthentication())
+    await expect(promise).rejects.toThrow(new InvalidCredentialsError())
   })
 })
