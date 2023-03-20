@@ -1,12 +1,10 @@
 import { faker } from '@faker-js/faker'
-import { HttpPostClientSpy } from '@tests/mocks/mock-http-client'
-import { mockAccountModel, mockAuthentication } from '@src/../tests/mocks/mock-account'
+import { HttpPostClientSpy ,mockAccountModel, mockAuthentication } from '@tests/mocks'
 import { ApiAuthentication } from '@src/data/usecases/authentication/api-authentication'
-import { HttpStatusCode } from '@src/data/protocols/http/http-response'
-import { InvalidCredentialsError } from '@src/domain/errors/invalid-credentials-error'
-import { UnexpectedError } from '@src/domain/errors/unexpected-error'
-import { AuthenticationParams } from '@src/domain/usecases/authentication'
-import { AccountModel } from '@src/domain/models/account-model'
+import { HttpStatusCode } from '@src/data/protocols/http'
+import { InvalidCredentialsError, UnexpectedError } from '@src/domain/errors'
+import { AuthenticationParams } from '@src/domain/usecases'
+import { AccountModel } from '@src/domain/models'
 
 type SutTypes = {
   sut: ApiAuthentication

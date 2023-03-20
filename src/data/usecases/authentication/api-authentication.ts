@@ -1,9 +1,7 @@
-import { AuthenticationParams, IAuthentication } from '@src/domain/usecases/authentication'
-import { IHttpPostClient } from '@src/data/protocols/http/http-post-client'
-import { HttpStatusCode } from '@src/data/protocols/http/http-response'
-import { InvalidCredentialsError } from '@src/domain/errors/invalid-credentials-error'
-import { UnexpectedError } from '@src/domain/errors/unexpected-error'
-import { AccountModel } from '@src/domain/models/account-model'
+import { AuthenticationParams, IAuthentication } from '@src/domain/usecases'
+import { IHttpPostClient, HttpStatusCode } from '@src/data/protocols/http'
+import { InvalidCredentialsError, UnexpectedError } from '@src/domain/errors'
+import { AccountModel } from '@src/domain/models'
 
 export class ApiAuthentication implements IAuthentication {
   constructor (
