@@ -13,8 +13,8 @@
     "rootDirs": ["src", "tests"],
     "baseUrl": "src",
     "paths": {
-      "@/src/*": ["*"],
-      "@/tests/*": ["../tests/*"]
+      "@src/*": ["*"],
+      "@tests/*": ["../tests/*"]
     },
     "allowJs": true,
     "resolveJsonModule": true

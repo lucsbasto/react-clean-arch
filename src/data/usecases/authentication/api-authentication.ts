@@ -1,5 +1,5 @@
-import { AuthenticationParams } from '@/src/domain/usecases/authentication'
-import { IHttpPostClient } from 'data/protocols/http/http-post-client'
+import { AuthenticationParams } from '@src/domain/usecases/authentication'
+import { IHttpPostClient } from '@src/data/protocols/http/http-post-client'
 
 export class ApiAuthentication {
   constructor (

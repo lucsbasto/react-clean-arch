@@ -1,7 +1,7 @@
-import { HttpPostClientSpy } from '@/tests/mocks/mock-http-client'
-import { ApiAuthentication } from '@/src/data/usecases/authentication/api-authentication'
+import { HttpPostClientSpy } from '@tests/mocks/mock-http-client'
+import { ApiAuthentication } from '@src/data/usecases/authentication/api-authentication'
 import { faker } from '@faker-js/faker'
-import { mockAuthentication } from '../../../mocks/mock-authentication'
+import { mockAuthentication } from '@tests/mocks/mock-authentication'
 type SutTypes = {
   sut: ApiAuthentication
   httpPostClientSpy: HttpPostClientSpy

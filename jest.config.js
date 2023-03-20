@@ -15,8 +15,8 @@ module.exports = {
     '.+\\.(ts|tsx)$': 'ts-jest'
   },
   moduleNameMapper: {
-    '@/tests/(.*)': '<rootDir>/tests/$1',
-    '@/src/(.*)': '<rootDir>/src/$1',
+    '@tests/(.*)': '<rootDir>/tests/$1',
+    '@src/(.*)': '<rootDir>/src/$1',
     '\\.scss$': 'identity-obj-proxy'
   }
 }
