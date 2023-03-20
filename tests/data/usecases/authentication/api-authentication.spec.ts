@@ -1,6 +1,7 @@
 import { HttpPostClientSpy } from '@/tests/mocks/mock-http-client'
 import { ApiAuthentication } from '@/src/data/usecases/authentication/api-authentication'
 import { faker } from '@faker-js/faker'
+import { mockAuthentication } from '../../../mocks/mock-authentication'
 type SutTypes = {
   sut: ApiAuthentication
   httpPostClientSpy: HttpPostClientSpy
@@ -18,7 +19,15 @@ describe('ApiAuthentication', () => {
   test('Should call HttpPostClient with correct URL', async () => {
     const url = faker.internet.url()
     const { sut, httpPostClientSpy } = makeSut(url)
-    await sut.auth()
+    const authenticationParams = mockAuthentication()
+    await sut.auth(authenticationParams)
     expect(httpPostClientSpy.url).toBe(url)
+  })
+
+  test('Should call HttpPostClient with correct body', async () => {
+    const { sut, httpPostClientSpy } = makeSut()
+    const authenticationParams = mockAuthentication()
+    await sut.auth(authenticationParams)
+    expect(httpPostClientSpy.body).toEqual(authenticationParams)
   })
 })
